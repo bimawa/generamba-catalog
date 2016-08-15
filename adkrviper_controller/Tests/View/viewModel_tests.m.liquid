@@ -6,29 +6,35 @@
 //  Copyright {{ year }} {{ developer.company }}. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
-#import <OCMock/OCMock.h>
-
+#import "Kiwi.h"
 #import "{{ prefix }}{{ module_info.name }}ViewModel.h"
 
-@interface {{ prefix }}{{ module_info.name }}ViewModelTests : XCTestCase
-
-@end
-
-@implementation {{ prefix }}{{ module_info.name }}ViewModelTests
-
-#pragma mark - Настройка окружения для тестирования
-
-- (void)setUp {
-    [super setUp];
-
-    self.router = [[{{ prefix }}{{ module_info.name }}ViewModel alloc] init];
-}
-
-- (void)tearDown {
-    self.router = nil;
-
-    [super tearDown];
-}
-
-@end
+SPEC_BEGIN({{ prefix }}{{ module_info.name }}ViewModelSpec)
+  describe(@"{{ prefix }}{{ module_info.name }}ViewModel", ^{
+    registerMatchers(@"{{ prefix }}"); // Registers BGTangentMatcher, BGConvexMatcher, etc.
+    context(@"ViewModel testing", ^{
+      {{ prefix }}{{ module_info.name }}ViewModel *viewModel = [[{{ prefix }}{{ module_info.name }}ViewModel alloc] init];
+      
+      beforeAll(^{ // Occurs once
+      });
+      
+      afterAll(^{ // Occurs once
+      });
+      
+      beforeEach(^{ // Occurs before each enclosed "it"
+      });
+      
+      afterEach(^{ // Occurs after each enclosed "it"
+      });
+      
+      specify(^{
+        [[viewModel shouldNot] beNil];
+      });
+      
+      context(@"Test Case #1", ^{
+        pending(@"something unimplemented", ^{
+        });
+      });
+    });
+  });
+SPEC_END

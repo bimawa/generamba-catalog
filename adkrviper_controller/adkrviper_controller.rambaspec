@@ -1,7 +1,7 @@
 # Template information section
 name: "adkrviper_controller"
-summary: "VIPER module template with ASViewController playing as a View. Used for AsyncDisplayKit. And MVVM. Powered on RVIPER template."
-author: "Maksim Bunkov"
+summary: "VIPER module template with ASViewController playing as a View. Used for AsyncDisplayKit. And MVVM. Powered on RVIPER template. For test selected Kiwi"
+author: "Maxim Bunkov"
 version: "0.0.1"
 license: "MIT"
 
@@ -61,6 +61,6 @@ test_files:
 # Template dependencies
 dependencies:
 - Typhoon
-- OCMock
+- Kiwi
 - RamblerTyphoonUtils
 - ViperMcFlurry

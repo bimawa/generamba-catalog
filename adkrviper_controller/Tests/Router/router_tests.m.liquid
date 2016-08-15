@@ -6,31 +6,39 @@
 //  Copyright {{ year }} {{ developer.company }}. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
-#import <OCMock/OCMock.h>
+#import "Kiwi.h"
 
 #import "{{ prefix }}{{ module_info.name }}Router.h"
 
-@interface {{ prefix }}{{ module_info.name }}RouterTests : XCTestCase
+SPEC_BEGIN({{ prefix }}{{ module_info.name }}RouterSpec)
+    describe(@"{{ prefix }}{{ module_info.name }}Router", ^{
+        registerMatchers(@"{{ prefix }}"); 
+        context(@"Router testing", ^{
+            {{ prefix }}{{ module_info.name }}Router  *router = [[{{ prefix }}{{ module_info.name }}Router alloc] init];
 
-@property (strong, nonatomic) {{ prefix }}{{ module_info.name }}Router *router;
+            beforeAll(^{ 
+            });
 
-@end
+            afterAll(^{ 
+            });
 
-@implementation {{ prefix }}{{ module_info.name }}RouterTests
+            beforeEach(^{ 
+            });
 
-#pragma mark - Настройка окружения для тестирования
+            afterEach(^{ 
+            });
 
-- (void)setUp {
-    [super setUp];
+            specify(^{
+                [[router shouldNot] beNil];
+            });
 
-    self.router = [[{{ prefix }}{{ module_info.name }}Router alloc] init];
-}
-
-- (void)tearDown {
-    self.router = nil;
-
-    [super tearDown];
-}
-
-@end
+            context(@"Test Case #1", ^{
+                if("Test life circle", ^{
+                    
+                });
+                pending(@"something unimplemented", ^{
+                });
+            });
+        });
+    });
+SPEC_END
