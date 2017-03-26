@@ -19,12 +19,12 @@
 {
     return [TyphoonDefinition withClass:[RamblerViperModuleFactory class]
                           configuration:^(TyphoonDefinition *definition) {
-                              [definition useInitializer:@selector(initWithAssembly:selectorName:)
-                                              parameters:^(TyphoonMethod *initializer) {
-                                                  [initializer injectParameterWith:self];
-                                                  [initializer injectParameterWith:@"view{{ module_info.name }}Module"];
-                                              }];
-                          }];
+                              [definition useInitializer:@selector(initWithViewHandler:)
+                                          parameters:^(TyphoonMethod *initializer) {
+                                            [initializer injectParameterWith:^id <RamblerViperModuleTransitionHandlerProtocol>(void) {
+                                              return [self {{ prefix }}{{ module_info.name }}ViewController *)view{{ module_info.name }}Module];
+                                            }];
+                                          }];                          }];
 }
 
 - ({{ prefix }}{{ module_info.name }}ViewController *)view{{ module_info.name }}Module {
