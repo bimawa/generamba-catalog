@@ -19,18 +19,23 @@
 
 @implementation {{ prefix }}{{ module_info.name }}Presenter
 
+#pragma mark - Методы {{ prefix }}ModuleOutput
+
 #pragma mark - Методы {{ prefix }}{{ module_info.name }}ModuleInput
 
 - (void)configureModule {
-    // Стартовая конфигурация модуля, не привязанная к состоянию view
+  // Стартовая конфигурация модуля, не привязанная к состоянию view
+  {{ prefix }}{{ module_info.name }}ViewModel *viewModel = [[{{ prefix }}{{ module_info.name }}ViewModel alloc] initWithBlock:^({{ prefix }}{{ module_info.name }}ViewModel *builder) {
+  //Configure ViewModel with default params
+  
+  }];
+  self.viewModel = viewModel;
 }
 
 #pragma mark - Методы {{ prefix }}{{ module_info.name }}ViewOutput
 
-- (void)didTriggerViewReadyEvent {
-	{{ prefix }}{{ module_info.name }}ViewModel *viewModel = [{{ prefix }}{{ module_info.name }}ViewModel new];
-	self.viewModel = viewModel;
-	[self.view setupInitialState:self.viewModel];
+- (void)didTriggerViewReadyEvent {	
+  [self.view setupInitialState:self.viewModel];
 }
 
 #pragma mark - Методы {{ prefix }}{{ module_info.name }}InteractorOutput

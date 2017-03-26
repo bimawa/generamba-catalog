@@ -10,4 +10,26 @@
 
 @implementation {{ prefix }}{{ module_info.name }}ViewModel
 
++ (instancetype)initWithBlock:({{ prefix }}{{ module_info.name }}ViewModelBuilderBlock)block
+{
+  return [[{{ prefix }}{{ module_info.name }}ViewModel alloc] initWithBlock:block];
+}
+
+- (instancetype)initWithBlock:({{ prefix }}{{ module_info.name }}ViewModelBuilderBlock)block
+{
+  self = [super init];
+  if (self) {
+    //Place defaults params for props
+
+    if (block)
+      block(self);
+  }
+  return self;
+}
+
+- (instancetype)update:({{ prefix }}{{ module_info.name }}ViewModelBuilderBlock)updateBlock
+{
+  updateBlock(self);
+  return self;
+}
 @end
