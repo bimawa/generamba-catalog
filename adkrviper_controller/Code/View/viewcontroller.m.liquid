@@ -23,27 +23,25 @@
 
 - (instancetype)init
 {
-	 {{ prefix }}{{ module_info.name }}DisplayNode *viewNode= [[{{ prefix }}{{ module_info.name }}DisplayNode alloc] init];
-	 self = [super initWithNode:viewNode];
-	 if (self)
-	 {
-	     self.viewNode = viewNode;
-	 }     
-
-         return self;
+  {{ prefix }}{{ module_info.name }}DisplayNode *viewNode= [[{{ prefix }}{{ module_info.name }}DisplayNode alloc] init];
+  self = [super initWithNode:viewNode];
+  if (self)
+  {
+    self.viewNode = viewNode;
+  }      
+   return self;
 }
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
-
-	[self.output didTriggerViewReadyEvent];
+  [super viewDidLoad];
+  [self.output didTriggerViewReadyEvent];
 }
 
 #pragma mark - Методы {{ prefix }}{{ module_info.name }}ViewInput
 
 - (void)setupInitialState:({{ prefix }}{{ module_info.name }}ViewModel *)viewModel {
-	// В этом методе происходит настройка параметров view, зависящих от ее жизненого цикла (создание элементов, анимации и пр.)
-	self.viewModel = viewModel;
+// В этом методе происходит настройка параметров view, зависящих от ее жизненого цикла (создание элементов, анимации и пр.)
+  self.viewModel = viewModel;
 }
 
 @end
