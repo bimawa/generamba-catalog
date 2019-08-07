@@ -1,0 +1,31 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+import ReSwift
+
+class {{ prefix }}{{ module_info.name }}ModuleReducer: ReducerProtocol {
+
+  public struct {{ prefix }}{{ module_info.name }}ModuleState: StateType {
+
+  }
+
+  typealias State = {{ prefix }}{{ module_info.name }}ModuleState
+
+
+  static func handleAction(_ action: Action, state: {{ prefix }}{{ module_info.name }}ModuleState?) -> {{ prefix }}{{ module_info.name }}ModuleState {
+    var state: {{ prefix }}{{ module_info.name }}ModuleState = state ?? {{ prefix }}{{ module_info.name }}ModuleState()
+
+    switch action {
+    default:
+      break
+    }
+    return state
+  }
+
+}

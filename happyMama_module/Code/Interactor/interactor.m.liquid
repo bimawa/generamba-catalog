@@ -1,0 +1,34 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+#import "{{ prefix }}{{ module_info.name }}Interactor.h"
+#import "{{ prefix }}{{ module_info.name }}InteractorOutput.h"
+#import <ReactiveObjC/RACSubject.h>
+#import <ReactiveObjC/RACSignal+Operations.h>
+
+@interface {{ prefix }}{{ module_info.name }}Interactor()
+@property(nonatomic, strong) RACSubject *closeModuleSubject;
+@end
+
+@implementation {{ prefix }}{{ module_info.name }}Interactor
+
+- (instancetype)init {
+  self = [super init];
+  if (self) {
+    self.closeModuleSubject = [RACSubject subject];
+  }
+  return self;
+}
+
+#pragma mark - Методы {{prefix}}{{module_info.name}}InteractorInput
+
+- (void)closeModule {
+  [self.closeModuleSubject sendNext:nil];
+}
+
+@end

@@ -1,0 +1,47 @@
+# Template information section
+name: "reswift_viper"
+summary: "Pseudo VIPER implementation on ReSwift ideology"
+author: "Maxim Bunkov"
+version: "0.1.0"
+license: "MIT"
+
+# The declarations for code files
+
+code_files:
+# View layer
+- {name: View/ViewController.swift, path: Code/View/viewcontroller.swift.liquid}
+
+# Actions layer
+- {name: Actions/ActionsInput.swift, path: Code/Actions/actions_input.swift.liquid}
+- {name: Actions/Actions.swift, path: Code/Actions/actions.swift.liquid}
+
+# Reducer layer
+- {name: Reducer/Reducer.swift, path: Code/Reducer/reducer.swift.liquid}
+
+# Router layer
+- {name: Router/RouterInput.swift, path: Code/Router/router_input.swift.liquid}
+- {name: Router/Router.swift, path: Code/Router/router.swift.liquid}
+
+# ViewModel Layer
+- {name: ViewModel/ViewModel.swift, path: Code/ViewModel/viewmodel.swift.liquid }
+
+# Configurator
+- {name: Module.swift, path: Code/module.swift.liquid}
+
+# The declarations for test files
+test_files:
+
+# Configurators tests
+#- {name: Configurator/ConfiguratorTests.swift, path: Tests/Configurator/configurator_tests.swift.liquid}
+
+# View tests
+#- {name: View/ViewTests.swift, path: Tests/View/view_tests.swift.liquid}
+
+# Interactor tests
+#- {name: Interactor/InteractorTests.swift, path: Tests/Interactor/interactor_tests.swift.liquid}
+
+# Presenter tests
+#- {name: Presenter/PresenterTests.swift, path: Tests/Presenter/presenter_tests.swift.liquid}
+
+# Router tests
+#- {name: Router/RouterTests.swift, path: Tests/Router/router_tests.swift.liquid}

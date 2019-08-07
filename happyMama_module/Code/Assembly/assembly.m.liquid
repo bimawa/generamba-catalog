@@ -1,0 +1,106 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+#import "{{ prefix }}{{ module_info.name }}Assembly.h"
+#import "{{ prefix }}{{ module_info.name }}ViewController.h"
+#import "{{ prefix }}{{ module_info.name }}Interactor.h"
+#import "{{ prefix }}{{ module_info.name }}Presenter.h"
+#import "{{ prefix }}{{ module_info.name }}Router.h"
+#import "{{ prefix }}{{ module_info.name }}ViewModel.h"
+#import "{{ prefix }}{{ module_info.name }}DisplayNode.h"
+#import <ViperMcFlurry/ViperMcFlurry.h>
+
+@interface {{ prefix }}{{ module_info.name }}Assembly ()
+
+@end
+
+@implementation {{ prefix }}{{ module_info.name }}Assembly
+
+- (id <RamblerViperModuleFactoryProtocol>)factory{{ module_info.name }}Module
+{
+  return [TyphoonDefinition withClass:[RamblerViperModuleFactory class]
+                        configuration:^(TyphoonDefinition *definition) {
+                            [definition useInitializer:@selector(initWithViewHandler:)
+                                        parameters:^(TyphoonMethod *initializer) {
+                                          [initializer injectParameterWith:^id <RamblerViperModuleTransitionHandlerProtocol>(void) {
+                                            return [self view{{ module_info.name }}Module];
+                                          }];
+                            }];             
+  }];
+}
+
+- ({{ prefix }}{{ module_info.name }}ViewModel *) viewModel{{ module_info.name }}Module {
+  return [TyphoonDefinition withClass:[{{ prefix }}{{ module_info.name }}ViewModel class]
+                        configuration:^(TyphoonDefinition *definition) {
+                            [definition useInitializer:@selector(initWithBlock:)
+                                        parameters:^(TyphoonMethod *initializer) {
+                                          [initializer injectParameterWith:^({{prefix}}{{module_info.name}}ViewModel * builder) {
+                                          //Default ViewModel properties;
+
+                                          }];
+                            }];             
+  }];
+}
+
+- ({{ prefix }}{{ module_info.name }}ViewController *)view{{ module_info.name }}Module {
+  return [TyphoonDefinition withClass:[{{ prefix }}{{ module_info.name }}ViewController class]
+                        configuration:^(TyphoonDefinition *definition) {
+                            [definition useInitializer:@selector(initWithNode:) parameters:^(TyphoonMethod *initializer) {
+                              [initializer injectParameterWith:[self displayNode{{ prefix }}{{ module_info.name }}]];
+                            }];
+                            [definition injectProperty:@selector(viewNode)
+                                                  with:[self displayNode{{ prefix }}{{ module_info.name }}]];
+                            [definition injectProperty:@selector(output)
+                                                  with:[self presenter{{ module_info.name }}Module]];
+                            [definition injectProperty:@selector(moduleInput)
+                                                  with:[self presenter{{ module_info.name }}Module]];
+                            [definition injectProperty:@selector(viewModel)
+                                                  with:[self viewModel{{ module_info.name }}Module]];
+                        }];
+}
+
+- ({{ prefix }}{{ module_info.name }}DisplayNode *)displayNode{{ prefix }}{{ module_info.name }} {
+  return [TyphoonDefinition withClass:[{{ prefix }}{{ module_info.name }}DisplayNode class]
+                        configuration:^(TyphoonDefinition *definition) {
+                          [definition injectMethod:@selector(setupViewModel:) parameters:^(TyphoonMethod *method) {
+                            [method injectParameterWith:[self viewModelAllInterestingChatsScreenModule]];
+                          }];
+                        }];
+}
+
+- ({{ prefix }}{{ module_info.name }}Interactor *)interactor{{ module_info.name }}Module {
+  return [TyphoonDefinition withClass:[{{ prefix }}{{ module_info.name }}Interactor class]
+                        configuration:^(TyphoonDefinition *definition) {
+                            [definition injectProperty:@selector(output)
+                                                  with:[self presenter{{ module_info.name }}Module]];
+                        }];
+}
+
+- ({{ prefix }}{{ module_info.name }}Presenter *)presenter{{ module_info.name }}Module {
+  return [TyphoonDefinition withClass:[{{ prefix }}{{ module_info.name }}Presenter class]
+                        configuration:^(TyphoonDefinition *definition) {
+                            [definition injectProperty:@selector(view)
+                                                  with:[self view{{ module_info.name }}Module]];
+                            [definition injectProperty:@selector(interactor)
+                                                  with:[self interactor{{ module_info.name }}Module]];
+                            [definition injectProperty:@selector(router)
+                                                  with:[self router{{ module_info.name }}Module]];
+                            [definition injectProperty:@selector(viewModel)
+                                                  with:[self viewModel{{ module_info.name }}Module]];
+                        }];
+}
+
+- ({{ prefix }}{{ module_info.name }}Router *)router{{ module_info.name }}Module {
+  return [TyphoonDefinition withClass:[{{ prefix }}{{ module_info.name }}Router class]
+                        configuration:^(TyphoonDefinition *definition) {
+                            [definition injectProperty:@selector(transitionHandler)
+                                                  with:[self view{{ module_info.name }}Module]];
+                        }];
+}
+
+@end

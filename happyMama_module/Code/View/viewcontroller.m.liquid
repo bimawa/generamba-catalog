@@ -1,0 +1,80 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+#import <ViperMcFlurry/ViperMcFlurry.h>
+#import "ASCellNode.h"
+#import "ASCollectionNode.h"
+#import "{{ prefix }}{{ module_info.name }}ViewController.h"
+#import "{{ prefix }}{{ module_info.name }}ViewOutput.h"
+#import "{{ prefix }}{{ module_info.name }}DisplayNode.h"
+#import "{{ prefix }}{{ module_info.name }}ViewModel.h"
+
+@interface {{ prefix }}{{ module_info.name }}ViewController() <RamblerViperModuleTransitionHandlerProtocol>
+@property (nonatomic, strong) {{ prefix }}{{ module_info.name }}DisplayNode  *viewNode;
+@property (nonatomic, strong) {{ prefix }}{{ module_info.name }}ViewModel    *viewModel;
+@end
+
+@implementation {{ prefix }}{{ module_info.name }}ViewController
+
+#pragma mark - Методы жизненного цикла
+
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  [self.output didTriggerViewReadyEvent];
+  [self setupInitialState];
+}
+
+- (void)setupInitialState{
+// В этом методе происходит настройка параметров view, зависящих от ее жизненого цикла (создание элементов, анимации и пр.)
+  [self p_bindViewModel];
+}
+
+- (void)p_bindViewModel {
+
+}
+
+#pragma mark - Методы {{ prefix }}{{ module_info.name }}ViewInput
+
+- (void)showErrorInfo:(NSError *)errorHandler {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self showError:errorHandler];
+  });
+}
+
+#pragma mark Delegates
+
+- (BOOL)shouldBatchFetchForCollectionNode:(ASCollectionNode *)collectionNode {
+  return [self.viewModel isShouldBatchFetch];
+}
+
+- (void)collectionNode:(ASCollectionNode *)collectionNode willBeginBatchFetchWithContext:(ASBatchContext *)context {
+  [self.output fetchBatchRequestWithContext:context];
+}
+
+- (NSInteger)collectionNode:(ASCollectionNode *)collectionNode numberOfItemsInSection:(NSInteger)section {
+  return [self.output getNumberOfItemsInSection:(NSUInteger) section];
+}
+
+- (NSInteger)numberOfSectionsInCollectionNode:(ASCollectionNode *)collectionNode {
+  return 1;
+}
+
+- (ASCellNodeBlock)collectionNode:(ASCollectionNode *)collectionNode nodeBlockForItemAtIndexPath:(NSIndexPath *)indexPath {
+  return ^ASCellNode * {
+    id         *cellViewModel = [self.output getCellViewModelForIndexPath:indexPath];
+    ASCellNode *cellNode      = [[ASCellNode alloc] init];
+    //[cellNode setupViewModel:cellViewModel];
+    return cellNode;
+  };
+}
+
+- (void)collectionNode:(ASCollectionNode *)collectionNode didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+  [self.output a_didSelectedIndexPath:indexPath];
+}
+
+@end

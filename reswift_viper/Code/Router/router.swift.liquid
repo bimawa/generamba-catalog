@@ -1,0 +1,49 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+import ReSwift
+import ReSwiftRouter
+
+internal enum {{ prefix }}{{ module_info.name }}ModuleRouteTypes: RouteElementIdentifier {
+
+  var route: Route { return [rawValue] }
+}
+
+class {{ prefix }}{{ module_info.name }}ModuleRouter: {{ prefix }}{{ module_info.name }}ModuleRouterInput, Connectable {
+  weak var transitionHandler: UIViewController?
+
+  func pushRouteSegment(_ routeElementIdentifier: RouteElementIdentifier, animated: Bool,
+                        completionHandler: @escaping RoutingCompletionHandler) -> Routable {
+
+    guard {{ prefix }}{{ module_info.name }}ModuleRouteTypes(rawValue: routeElementIdentifier) != nil,
+          let segment = {{ prefix }}{{ module_info.name }}ModuleRouteTypes(rawValue: routeElementIdentifier) else {
+      // swiftlint:disable todo
+      // TODO: Find assert for check wrong segment
+      fatalError("Invalid route segment passed: \(routeElementIdentifier)")
+    }
+    switch segment {
+    }
+    return self
+  }
+
+  // swiftlint:disable identifier_name
+  func changeRouteSegment(_ from: RouteElementIdentifier, to: RouteElementIdentifier, animated: Bool,
+                          completionHandler: @escaping RoutingCompletionHandler) -> Routable {
+    return self
+  }
+
+  func popRouteSegment(_ routeElementIdentifier: RouteElementIdentifier, animated: Bool,
+                       completionHandler: @escaping RoutingCompletionHandler) {
+    completionHandler()
+  }
+}
+
+// MARK: 
+extension {{ prefix }}{{ module_info.name }}ModuleRouter {
+}

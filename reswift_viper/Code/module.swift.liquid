@@ -1,0 +1,29 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+
+import Foundation
+import UIKit
+import ReSwiftRouter
+
+class {{ prefix }}{{ module_info.name }}Module: SLRViewModuleProtocol {
+  var rootViewController: SLRNavigationController
+  var router: Routable = {{ prefix }}{{ module_info.name }}ModuleRouter()
+  var view: UIViewController
+  var reducer: {{ prefix }}{{ module_info.name }}ModuleReducer = {{ prefix }}{{ module_info.name }}ModuleReducer()
+
+  init() {
+    let routerModule = {{ prefix }}{{ module_info.name }}ModuleRouter()
+    router = routerModule
+    let viewController = {{ prefix }}{{ module_info.name }}ModuleViewController(router: routerModule)
+    routerModule.transitionHandler = viewController
+    view = viewController
+    rootViewController = SLRNavigationController(withRoot: viewController)
+  }
+
+}
