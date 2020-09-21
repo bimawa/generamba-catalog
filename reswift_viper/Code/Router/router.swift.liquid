@@ -11,6 +11,7 @@ import ReSwift
 import ReSwiftRouter
 
 internal enum {{ prefix }}{{ module_info.name }}ModuleRouteTypes: RouteElementIdentifier {
+  case defaultRoute
 
   var route: Route { return [rawValue] }
 }
@@ -25,10 +26,11 @@ class {{ prefix }}{{ module_info.name }}ModuleRouter: {{ prefix }}{{ module_info
           let segment = {{ prefix }}{{ module_info.name }}ModuleRouteTypes(rawValue: routeElementIdentifier) else {
       // swiftlint:disable todo
       // TODO: Find assert for check wrong segment
+      // swiftlint:enable todo
       fatalError("Invalid route segment passed: \(routeElementIdentifier)")
     }
-    switch segment {
-    }
+    //switch segment {
+    //}
     return self
   }
 
@@ -37,6 +39,7 @@ class {{ prefix }}{{ module_info.name }}ModuleRouter: {{ prefix }}{{ module_info
                           completionHandler: @escaping RoutingCompletionHandler) -> Routable {
     return self
   }
+  // swiftlint:enable identifier_name
 
   func popRouteSegment(_ routeElementIdentifier: RouteElementIdentifier, animated: Bool,
                        completionHandler: @escaping RoutingCompletionHandler) {

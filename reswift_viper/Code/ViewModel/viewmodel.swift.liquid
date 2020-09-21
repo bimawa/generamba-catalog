@@ -23,9 +23,9 @@ class {{ prefix }}{{ module_info.name }}ModuleViewModel: SLRModuleViewModelProto
   }
 
   func storeSubscribers() {
-    SLRRedux.store?.subscribe(self) { subscription in
+    //SLRRedux.store?.subscribe(self) { subscription in
       //subscription.select { $0.statisticsState }
-    }
+    //}
   }
 
   func storeUnSubscribers() {

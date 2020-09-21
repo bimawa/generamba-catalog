@@ -9,21 +9,21 @@ license: "MIT"
 
 code_files:
 # View layer
-- {name: View/ViewController.swift, path: Code/View/viewcontroller.swift.liquid}
+- {name: View/ModuleViewController.swift, path: Code/View/viewcontroller.swift.liquid}
 
 # Actions layer
-- {name: Actions/ActionsInput.swift, path: Code/Actions/actions_input.swift.liquid}
-- {name: Actions/Actions.swift, path: Code/Actions/actions.swift.liquid}
+- {name: Actions/ModuleActionsInput.swift, path: Code/Actions/actions_input.swift.liquid}
+- {name: Actions/ModuleActions.swift, path: Code/Actions/actions.swift.liquid}
 
 # Reducer layer
-- {name: Reducer/Reducer.swift, path: Code/Reducer/reducer.swift.liquid}
+- {name: Reducer/ModuleReducer.swift, path: Code/Reducer/reducer.swift.liquid}
 
 # Router layer
-- {name: Router/RouterInput.swift, path: Code/Router/router_input.swift.liquid}
-- {name: Router/Router.swift, path: Code/Router/router.swift.liquid}
+- {name: Router/ModuleRouterInput.swift, path: Code/Router/router_input.swift.liquid}
+- {name: Router/ModuleRouter.swift, path: Code/Router/router.swift.liquid}
 
 # ViewModel Layer
-- {name: ViewModel/ViewModel.swift, path: Code/ViewModel/viewmodel.swift.liquid }
+- {name: ViewModel/ModuleViewModel.swift, path: Code/ViewModel/viewmodel.swift.liquid }
 
 # Configurator
 - {name: Module.swift, path: Code/module.swift.liquid}
@@ -32,16 +32,16 @@ code_files:
 test_files:
 
 # Configurators tests
-#- {name: Configurator/ConfiguratorTests.swift, path: Tests/Configurator/configurator_tests.swift.liquid}
+#- {name: Configurator/ModuleConfiguratorTests.swift, path: Tests/Configurator/configurator_tests.swift.liquid}
 
 # View tests
-#- {name: View/ViewTests.swift, path: Tests/View/view_tests.swift.liquid}
+#- {name: View/ModuleViewTests.swift, path: Tests/View/view_tests.swift.liquid}
 
 # Interactor tests
-#- {name: Interactor/InteractorTests.swift, path: Tests/Interactor/interactor_tests.swift.liquid}
+#- {name: Interactor/ModuleInteractorTests.swift, path: Tests/Interactor/interactor_tests.swift.liquid}
 
 # Presenter tests
-#- {name: Presenter/PresenterTests.swift, path: Tests/Presenter/presenter_tests.swift.liquid}
+#- {name: Presenter/ModulePresenterTests.swift, path: Tests/Presenter/presenter_tests.swift.liquid}
 
 # Router tests
-#- {name: Router/RouterTests.swift, path: Tests/Router/router_tests.swift.liquid}
+#- {name: Router/ModuleRouterTests.swift, path: Tests/Router/router_tests.swift.liquid}

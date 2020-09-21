@@ -1,0 +1,34 @@
+# Template information section
+name: "streamlayer_viper"
+summary: "Streamlayer VIPER implementation"
+author: "Maxim Bunkov"
+version: "0.1.0"
+license: "MIT"
+
+# The declarations for code files
+
+code_files:
+# View layer
+- {name: View/ModuleViewController.swift, path: Code/View/viewController.swift.liquid}
+
+# Interactor layer
+- {name: Interactor/ModuleInteractor.swift, path: Code/Interactor/interactor.swift.liquid}
+- {name: Interactor/ModuleInteractorOutput.swift, path: Code/Interactor/interactorOutput.swift.liquid}
+
+# Router layer
+- {name: Router/ModuleRouter.swift, path: Code/Router/router.swift.liquid}
+
+# ViewModel Layer
+- {name: ViewModel/ModuleViewModel.swift, path: Code/ViewModel/viewModel.swift.liquid}
+
+# Assembly layer
+- {name: Assembly/ModuleAssembly.swift, path: Code/Assembly/assembly.swift.liquid}
+
+# The declarations for test files
+test_files:
+
+# View tests
+- {name: View/ModuleViewTests.swift, path: Tests/View/viewcontroller_tests.swift.liquid}
+
+# ViewModel Layer
+- {name: ViewModel/ModuleViewModel.swift, path: Tests/ViewModel/viewmodel_tests.swift.liquid}

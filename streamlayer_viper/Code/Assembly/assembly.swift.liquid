@@ -1,0 +1,32 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+import StreamLayerVendor
+
+class {{ prefix }}{{ module_info.name }}ModuleAssembly: SLRVIPERFactoryInputModule {
+
+    private let dependencies = MainDependencyContainer.{{ prefix }}{{ module_info.name }}ModuleAssemblyDependencyResolver()
+
+    var factoryScreenModule: SLRNavigationControllerWrapper {
+        return self.viewModule
+    }
+
+    @Weaver(.registration)
+    var viewModule: {{ prefix }}{{ module_info.name }}View
+
+    @Weaver(.registration)
+    var presenterModule: {{ prefix }}{{ module_info.name }}Presenter
+
+    @Weaver(.registration)
+    var routerModule: {{ prefix }}{{ module_info.name }}Router
+
+    @Weaver(.registration)
+    var interactorModule: {{ prefix }}{{ module_info.name }}Interactor
+
+}

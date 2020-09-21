@@ -1,0 +1,40 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+import StreamLayerVendor
+
+class {{ prefix }}{{ module_info.name }}ModulePresenter {
+
+    @Weaver(.reference)
+    private var interactor: {{ prefix }}{{ module_info.name }}ModuleInteractor
+
+    @Weaver(.reference)
+    private var router: {{ prefix }}{{ module_info.name }}ModuleRouter
+
+    @Weaver(.reference)
+    private var viewInput: {{ prefix }}{{ module_info.name }}ModuleView
+
+    @Weaver(.reference)
+    private var viewModelInput: {{ prefix }}{{ module_info.name }}ModuleViewModel
+
+    required init(injecting _: {{ prefix }}{{ module_info.name }}DependencyResolver) {
+        viewInput.viewOutput = self
+        viewInput.viewModelInput = viewModelInput
+        interactor.presenterOutput = self
+        print("[VIPER]: presenter: \(Unmanaged.passUnretained(self).toOpaque())")
+    }
+}
+
+extension {{ prefix }}{{ module_info.name }}ModulePresenter: {{ prefix }}{{ module_info.name }}ModuleViewOutput {
+
+}
+
+extension {{ prefix }}{{ module_info.name }}ModulePresenter: {{ prefix }}{{ module_info.name }}ModuleInteractorOutput {
+
+}
