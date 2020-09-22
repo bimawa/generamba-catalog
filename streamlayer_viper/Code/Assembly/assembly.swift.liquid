@@ -11,22 +11,25 @@ import StreamLayerVendor
 
 class {{ prefix }}{{ module_info.name }}ModuleAssembly: SLRVIPERFactoryInputModule {
 
-    private let dependencies = MainDependencyContainer.{{ prefix }}{{ module_info.name }}ModuleAssemblyDependencyResolver()
+    private let dependencies = MainDependencyContainer.slr{{ module_info.name }}ModuleAssemblyDependencyResolver()
 
     var factoryScreenModule: SLRNavigationControllerWrapper {
         return self.viewModule
     }
 
     @Weaver(.registration)
-    var viewModule: {{ prefix }}{{ module_info.name }}View
+    private var viewModule: {{ prefix }}{{ module_info.name }}ModuleView
 
     @Weaver(.registration)
-    var presenterModule: {{ prefix }}{{ module_info.name }}Presenter
+    private var presenterModule: {{ prefix }}{{ module_info.name }}ModulePresenter
 
     @Weaver(.registration)
-    var routerModule: {{ prefix }}{{ module_info.name }}Router
+    private var routerModule: {{ prefix }}{{ module_info.name }}ModuleRouter
 
     @Weaver(.registration)
-    var interactorModule: {{ prefix }}{{ module_info.name }}Interactor
+    private var interactorModule: {{ prefix }}{{ module_info.name }}ModuleInteractor
+
+    @Weaver(.registration)
+    private var viewModelInput: {{ prefix }}{{ module_info.name }}ModuleViewModel
 
 }

@@ -12,6 +12,7 @@ import StreamLayerVendor
 class {{ prefix }}{{ module_info.name }}ModuleView: SLRNavigationControllerWrapper {
 
     weak var viewOutput: {{ prefix }}{{ module_info.name }}ModuleViewOutput?
+    weak var viewModel: {{ prefix }}{{ module_info.name }}ModuleViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()

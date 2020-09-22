@@ -9,7 +9,13 @@ license: "MIT"
 
 code_files:
 # View layer
-- {name: View/ModuleViewController.swift, path: Code/View/viewController.swift.liquid}
+- {name: View/ModuleView.swift, path: Code/View/viewController.swift.liquid}
+- {name: View/ModuleViewOutput.swift, path: Code/View/viewOutput.swift.liquid}
+
+# Presenter layer
+- {name: Presenter/ModulePresenter.swift, path: Code/Presenter/presenter.swift.liquid}
+- {name: Presenter/ModulePresenterInput.swift, path: Code/Presenter/presenterInput.swift.liquid}
+- {name: Presenter/ModulePresenterOutput.swift, path: Code/Presenter/presenterOutput.swift.liquid}
 
 # Interactor layer
 - {name: Interactor/ModuleInteractor.swift, path: Code/Interactor/interactor.swift.liquid}

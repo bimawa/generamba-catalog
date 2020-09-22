@@ -23,9 +23,9 @@ class {{ prefix }}{{ module_info.name }}ModulePresenter {
     @Weaver(.reference)
     private var viewModelInput: {{ prefix }}{{ module_info.name }}ModuleViewModel
 
-    required init(injecting _: {{ prefix }}{{ module_info.name }}DependencyResolver) {
+    required init(injecting _: {{ prefix }}{{ module_info.name }}ModulePresenterDependencyResolver) {
         viewInput.viewOutput = self
-        viewInput.viewModelInput = viewModelInput
+        viewInput.viewModel = viewModelInput
         interactor.presenterOutput = self
         print("[VIPER]: presenter: \(Unmanaged.passUnretained(self).toOpaque())")
     }
